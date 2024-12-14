@@ -1,0 +1,19 @@
+<div class="container content">
+    <div class="row d-flex">
+        <div class="col-12 ">
+            <h2>INGRESA LOS DATOS DEL CLIENTE</h2>
+            <div class="">
+                <label for="dropdown">SELECT YOUR TYPE OF DNI:</label>
+                <select id="dropdown" >
+                  <option value="" disabled>CHOOSE A OPTION</option>
+                  <option *ngFor="let option of dropdownOptions" [value]="option">{{ option }}</option>
+                </select>
+            </div>
+            <div class="">
+                <label for="input">TYPE YOUR DNI</label>
+                <input id="input" type="number">
+            </div>
+                <button class="button" (click)="onButtonClick()">SEARCH CLIENT</button>
+        </div>
+    </div>
+</div>

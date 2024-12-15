@@ -11,7 +11,8 @@ export class DashboardComponent {
   dropdownValue: string = '';
   inputValue: string = '';
   isButtonDisabled: boolean = true;
-
+  selectedOption: string = '';  // Almacenará la opción seleccionada
+  dni: number | null = null;
   dropdownOptions: string[] = ['C', 'P'];
 
   constructor(private readonly userService: UserService){
@@ -19,6 +20,8 @@ export class DashboardComponent {
   }
 
   onButtonClick(){
+    console.log(this.selectedOption);
+    
     this.userService.getClient().subscribe({
       next: (data) => {
         console.log('Respuesta de la petición:', data);

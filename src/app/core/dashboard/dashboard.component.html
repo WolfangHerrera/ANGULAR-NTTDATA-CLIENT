@@ -1,19 +1,25 @@
 <div class="container content">
     <div class="row d-flex">
-        <div class="col-12 ">
+        <div class="col-12">
             <h2>INGRESA LOS DATOS DEL CLIENTE</h2>
+            
+            <!-- Dropdown -->
             <div class="">
                 <label for="dropdown">SELECT YOUR TYPE OF DNI:</label>
-                <select id="dropdown" >
+                <select id="dropdown" [(ngModel)]="selectedOption">
                   <option value="" disabled>CHOOSE A OPTION</option>
                   <option *ngFor="let option of dropdownOptions" [value]="option">{{ option }}</option>
                 </select>
             </div>
+            
+            <!-- Input -->
             <div class="">
                 <label for="input">TYPE YOUR DNI</label>
-                <input id="input" type="number">
+                <input id="input" type="number" [(ngModel)]="dni">
             </div>
-                <button class="button" (click)="onButtonClick()">SEARCH CLIENT</button>
+            
+            <!-- Button -->
+            <button class="button" (click)="onButtonClick()">SEARCH CLIENT</button>
         </div>
     </div>
 </div>

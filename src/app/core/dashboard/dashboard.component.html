@@ -1,25 +1,29 @@
-<div class="container content">
-    <div class="row d-flex">
-        <div class="col-12">
-            <h2>INGRESA LOS DATOS DEL CLIENTE</h2>
-            
-            <!-- Dropdown -->
-            <div class="">
-                <label for="dropdown">SELECT YOUR TYPE OF DNI:</label>
-                <select id="dropdown" [(ngModel)]="selectedOption">
-                  <option value="" disabled>CHOOSE A OPTION</option>
-                  <option *ngFor="let option of dropdownOptions" [value]="option">{{ option }}</option>
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 90vh;">
+        <div class="col-12 col-md-6 px-2 m-0">
+            <h1 class="fw-bolder">CUSTOMER INFO</h1>
+            <p>PLEASE ENTER THE TYPE AND NUMBER OF THE DOCUMENT TO SEARCH FOR INFORMATION.</p>
+
+            <!-- Document Type Selector -->
+            <div class="mb-3 p-0">
+                <select id="dropdown" [(ngModel)]="selectedOption" class="form-select" aria-describedby="dropdownHelp">
+                    <option value="" disabled>CHOOSE YOUR DOCUMENT TYPE</option>
+                    <option *ngFor="let option of dropdownOptions" [value]="option">{{ option }}</option>
                 </select>
+                <small id="dropdownHelp" class="text-danger">WRONG.</small>
             </div>
-            
-            <!-- Input -->
-            <div class="">
-                <label for="input">TYPE YOUR DNI</label>
-                <input id="input" type="number" [(ngModel)]="dni">
+
+            <!-- DNI Input -->
+            <div class="mb-3">
+                <input id="input" type="text" [(ngModel)]="dni" class="form-control" placeholder="DOCUMENT DNI" aria-describedby="dniHelp">
+                <small id="dniHelp" class="text-danger">WRONG</small>
             </div>
-            
-            <!-- Button -->
+
+            <!-- Search Button -->
             <button class="button" (click)="onButtonClick()">SEARCH CLIENT</button>
+        </div>
+        <div class="col-12 col-md-6 px-2 m-0">
+            <!-- Puedes agregar más contenido aquí si es necesario -->
         </div>
     </div>
 </div>

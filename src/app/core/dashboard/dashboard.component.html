@@ -1,32 +1,29 @@
-<div class="container">
-    <div class="row justify-content-center align-items-center" style="height: 90vh;">
-        <div class="col-12 col-md-6 px-2 m-0">
-            <h1 class="fw-bolder">CUSTOMER INFO</h1>
-            <p>PLEASE ENTER THE TYPE AND NUMBER OF THE DOCUMENT TO SEARCH FOR INFORMATION.</p>
-
-            <!-- Document Type Selector -->
+<div class="container" style="min-width: 600px;">
+    <div class="row justify-content-center align-items-center" style="height: 92vh;">
+        <div class="col-6 px-5 py-5 m-0 ctn-form">
+            <h1 class="fw-bolder my-3">CUSTOMER INFO</h1>
+            <p>THE CLIENT INFORMATION QUERY MODULE ALLOWS USERS TO ACCESS AND MANAGE CLIENT DATA EFFICIENTLY FROM THE DATABASE.</p>
             <div class="mb-3 p-0">
+                <small id="dropdownHelp" class="text-muted">DOCUMENT TYPE.</small>
                 <select id="dropdown" [(ngModel)]="selectedOption" class="form-select" aria-describedby="dropdownHelp">
-                    <option value="" disabled>CHOOSE YOUR DOCUMENT TYPE</option>
                     <option *ngFor="let option of dropdownOptions" [value]="option">{{ option }}</option>
                 </select>
                 <small id="dropdownHelp" class="text-danger">WRONG.</small>
             </div>
 
-            <!-- DNI Input -->
-            <div class="mb-3">
-                <input id="input" type="text" [(ngModel)]="dni" class="form-control" placeholder="DOCUMENT DNI" aria-describedby="dniHelp">
+            <div class="mb-3 p-0">
+                <small id="dropdownHelp" class="text-muted">DOCUMENT NUMBER.</small>
+                <input id="input" type="number" [(ngModel)]="dni" class="form-control" placeholder="..." aria-describedby="dniHelp">
                 <small id="dniHelp" class="text-danger">WRONG</small>
             </div>
 
-            <!-- Search Button -->
-            <button class="button" (click)="onButtonClick()">SEARCH CLIENT</button>
+            <button class="btn button my-3" (click)="onButtonClick()">SEARCH CLIENT</button>
         </div>
-        <div class="col-6 col-sm-none px-2 m-0">
+
+        <div class="col-6 py-0 px-5 m-0">
             <div class="ctn-image">
                 <img src="assets/login.svg" alt="Imagen centrada" class="image">
-              </div>
-              
+            </div>
         </div>
     </div>
 </div>

@@ -12,13 +12,12 @@ type DocumentType = {
 })
 export class UserHttpService {
 
-  private apiUrl = 'http://localhost:8090/api/getClient';
+  private apiUrl = 'https://nttdata-java-9b46689dced6.herokuapp.com/api/getClient';
 
   constructor(private readonly httpClient : HttpClient) { }
 
   getClient(dataJson : DocumentType): Observable<any>{
     const urlParms = this.apiUrl +`?typeDNI=${dataJson.documentType}&numberDNI=${dataJson.documentNumber}`;
-    // const urlParms = this.apiUrl +`?typeDNI=${dataJson.documentType}&numberDNI=23445322`;
     return this.httpClient.get(urlParms);
   }
 }

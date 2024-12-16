@@ -8,19 +8,19 @@ import { UserService } from 'src/app/service/request/user.service';
 })
 export class DashboardComponent {
 
-  dropdownValue: string = '';
-  inputValue: string = '';
-  isButtonDisabled: boolean = true;
-  selectedOption: string = '';  // Almacenará la opción seleccionada
+  selectedOption: string = '';
   dni: number | null = null;
-  dropdownOptions: string[] = ['C', 'P'];
+  dropdownOptions: string[] = ['CITIZENSHIP DOCUMENT', 'PASSPORT'];
 
-  constructor(private readonly userService: UserService){
+  constructor(private readonly userService: UserService){}
 
+  isFormValid(): boolean {
+    return this.selectedOption !== '' && this.dni !== null;
   }
 
-  onButtonClick(){
-    console.log(this.selectedOption);
+  onButtonClick(): void {
+    console.log('Selected Option:', this.selectedOption);
+    console.log('Document Number:', this.dni);
     
     this.userService.getClient().subscribe({
       next: (data) => {
@@ -31,5 +31,4 @@ export class DashboardComponent {
       }
     });
   }
-
 }

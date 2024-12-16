@@ -10,7 +10,7 @@ type DocumentType = {
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserHttpService {
 
   private apiUrl = 'http://localhost:8090/api/getClient';
 

@@ -9,8 +9,12 @@ const routes: Routes = [
     component: UserComponent,
   },
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard',
   }
 ];
 

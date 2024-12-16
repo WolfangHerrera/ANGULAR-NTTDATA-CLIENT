@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from 'src/app/service/request/user.service';
+import { Router } from '@angular/router';
+import { UserHttpService } from 'src/app/service/request/user.service';
 import Swal from 'sweetalert2';
 
 type DocumentType = {
@@ -30,7 +31,7 @@ export class DashboardComponent {
   formattedDni: string = '';
   dropdownOptions = ['CITIZENSHIP DOCUMENT', 'PASSPORT'];
 
-  constructor(private readonly userService: UserService){}
+  constructor(private readonly userHttpService: UserHttpService, private readonly router: Router){}
 
   isFormValid(): boolean {
     return this.selectedOption !== '' && this.selectedDni !== null && this.selectedDni.toString().length >= 8 && this.selectedDni.toString().length <= 11;
@@ -47,7 +48,7 @@ export class DashboardComponent {
       'documentType': this.selectedOption === 'CITIZENSHIP DOCUMENT' ? 'C' : 'P',
       'documentNumber': this.selectedDni
     }
-    this.userService.getClient(dataJson).subscribe({
+    this.userHttpService.getClient(dataJson).subscribe({
       next: (data : ResponseType) => {
         this.handleResponse(data);
       },
@@ -64,8 +65,6 @@ export class DashboardComponent {
 
   async handleResponse(response : ResponseType){
     console.log('Respuesta de la petición:', response);
-    
+    this.router.navigate(['/user']);
   }
-
-  
 }

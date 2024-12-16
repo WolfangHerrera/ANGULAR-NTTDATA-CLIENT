@@ -16,7 +16,7 @@
                 <small class="text-muted">DOCUMENT NUMBER.</small>
                 <input id="input" type="text" [(ngModel)]="formattedDni" (ngModelChange)="formatNumber($event)" class="form-control" placeholder="23445322" aria-describedby="dniHelp" />
                 <small id="dniHelp" class="text-danger" *ngIf="!selectedDni">PLEASE ENTER A DOCUMENT NUMBER</small>
-                <small id="dniHelp" class="text-danger" *ngIf="selectedDni && (selectedDni < 8 || selectedDni > 11)">MIN 8 CHARACTERS - MAX 11 CHARACTERS</small>
+                <small id="dniHelp" class="text-danger" *ngIf="selectedDni && (this.selectedDni.toString().length < 8 || this.selectedDni.toString().length > 11)">MIN 8 CHARACTERS - MAX 11 CHARACTERS</small>
             </div>
 
             <button class="btn button my-3" [disabled]="!isFormValid()" (click)="onButtonClick()">SEARCH CLIENT</button>

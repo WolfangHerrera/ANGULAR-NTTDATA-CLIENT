@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserHttpService } from 'src/app/service/request/user.service';
+import { UserDataService } from 'src/app/service/user/user.service';
 import Swal from 'sweetalert2';
 
 type DocumentType = {
@@ -9,15 +10,18 @@ type DocumentType = {
 };
 
 type ResponseType = {
-  documentType: string;
-  documentNumber: number;
-  name: string;
+  id: number;
+  firstName: string;
+  middleName: string;
   lastName: string;
-  birthDate: string;
-  address: string;
+  secondLastName: string;
   phone: string;
-  email: string;
+  address: string;
+  cityResidence: string;
+  typeDNI: string;
+  numberDNI: number;
 };
+
 
 @Component({
   selector: 'app-dashboard',
@@ -31,7 +35,7 @@ export class DashboardComponent {
   formattedDni: string = '';
   dropdownOptions = ['CITIZENSHIP DOCUMENT', 'PASSPORT'];
 
-  constructor(private readonly userHttpService: UserHttpService, private readonly router: Router){}
+  constructor(private readonly userHttpService: UserHttpService, private readonly userDataService: UserDataService, private readonly router: Router){}
 
   isFormValid(): boolean {
     return this.selectedOption !== '' && this.selectedDni !== null && this.selectedDni.toString().length >= 8 && this.selectedDni.toString().length <= 11;
@@ -64,7 +68,7 @@ export class DashboardComponent {
   }
 
   async handleResponse(response : ResponseType){
-    console.log('Respuesta de la petición:', response);
+    this.userDataService.setUserData(response);
     this.router.navigate(['/user']);
   }
 }

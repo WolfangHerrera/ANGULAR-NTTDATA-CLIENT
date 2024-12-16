@@ -2,16 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+type DocumentType = {
+  documentType: string;
+  documentNumber: number;
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:8090/api/getClient?typeDNI=C&numberDNI=23445322';
+  private apiUrl = 'http://localhost:8090/api/getClient';
 
   constructor(private readonly httpClient : HttpClient) { }
 
-  getClient(): Observable<any>{
-    return this.httpClient.get(this.apiUrl)
+  getClient(dataJson : DocumentType): Observable<any>{
+    const urlParms = this.apiUrl +`?typeDNI=${dataJson.documentType}&numberDNI=${dataJson.documentNumber}`;
+    // const urlParms = this.apiUrl +`?typeDNI=${dataJson.documentType}&numberDNI=23445322`;
+    return this.httpClient.get(urlParms);
   }
 }

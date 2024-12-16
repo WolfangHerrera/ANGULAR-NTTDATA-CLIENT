@@ -4,7 +4,7 @@
             <h1 class="fw-bolder my-3">CUSTOMER INFO</h1>
             <p>THE CUSTOMER INFORMATION MODULE ALLOWS USERS TO ACCESS AND READ CLIENT DATA EFFICIENTLY FROM THE DATABASE.</p>
             <div class="mb-3 p-0">
-                <small id="dropdownHelp" class="text-muted">DOCUMENT TYPE.</small>
+                <small class="text-muted">DOCUMENT TYPE.</small>
                 <select id="dropdown" [(ngModel)]="selectedOption" class="form-select" aria-describedby="dropdownHelp">
                     <option value="" disabled selected>SELECT AN OPTION</option>
                     <option *ngFor="let option of dropdownOptions" [value]="option">{{ option }}</option>
@@ -13,9 +13,10 @@
             </div>
 
             <div class="mb-3 p-0">
-                <small id="dniHelp" class="text-muted">DOCUMENT NUMBER.</small>
-                <input id="input" type="number" [(ngModel)]="dni" class="form-control" placeholder="23445322" aria-describedby="dniHelp">
-                <small id="dniHelp" class="text-danger" *ngIf="!dni">PLEASE ENTER A DOCUMENT NUMBER</small>
+                <small class="text-muted">DOCUMENT NUMBER.</small>
+                <input id="input" type="text" [(ngModel)]="formattedDni" (ngModelChange)="formatNumber($event)" class="form-control" placeholder="23445322" aria-describedby="dniHelp" />
+                <small id="dniHelp" class="text-danger" *ngIf="!selectedDni">PLEASE ENTER A DOCUMENT NUMBER</small>
+                <small id="dniHelp" class="text-danger" *ngIf="selectedDni && (selectedDni < 8 || selectedDni > 11)">MIN 8 CHARACTERS - MAX 11 CHARACTERS</small>
             </div>
 
             <button class="btn button my-3" [disabled]="!isFormValid()" (click)="onButtonClick()">SEARCH CLIENT</button>

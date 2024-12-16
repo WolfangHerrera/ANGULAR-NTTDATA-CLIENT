@@ -1,7 +1,11 @@
 <header class="d-block" style="height: 8vh;">
-        <div class="text-center" style="min-width: 600px;">
-            <a href="https://wolfangdevs.com" target="_blank">
-                <img src="assets/logo-wd.png" alt="WOLFANGDEVS" width="80px">
-            </a>
+    <div class="contenedor text-center" style="min-width: 600px; position: relative;">
+        <a href="https://wolfangdevs.com" target="_blank">
+            <img src="assets/logo-wd.png" alt="WOLFANGDEVS" width="80px">
+        </a>
+        <div  *ngIf="isInUserPath" class="right-aligned d-flex align-items-center px-3" (click)="navigateToHome()">
+            <h5 class="my-0 mx-2">EXIT</h5>
+            <img src="assets/ico-exit.svg" alt="exit" width="32px">
         </div>
+    </div>
 </header>

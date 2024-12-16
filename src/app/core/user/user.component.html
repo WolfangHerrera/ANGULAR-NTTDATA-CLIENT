@@ -1,11 +1,11 @@
 <div class="container" style="min-width: 600px;">
     <div class="row justify-content-center align-items-center" style="height: 92vh;">
-        <div class="col-12 px-5 py-5 m-0 text-center">
-            <h1 class="fw-bolder my-3">CUSTOMER INFO</h1>
-            <div class="mb-3 p-0">
-                <small class="text-muted">DOCUMENT NUMBER.</small>
-                <input id="input" type="text" class="form-control" [placeholder]="userData.numberDNI" aria-describedby="dniHelp" disabled/>
+        <div class="col-6 px-5 py-5 m-0 ctn-form">
+            <h1 class="fw-bolder my-3 text-center">CUSTOMER INFO</h1>
+            <div *ngFor="let item of objectForm" class="mb-3 p-0">
+                <small class="text-muted">{{item.label}}:</small>
+                <input id="input" type="text" class="form-control" [placeholder]="item.data.toString().toUpperCase()" aria-describedby="dniHelp" disabled/>
             </div>
         </div>
     </div>
-</div        >
+</div>
